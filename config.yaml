@@ -1,0 +1,55 @@
+# Bot Configuration
+bot:
+  name: "AI Construction & Tax Bot"
+  description: "Bot AI komprehensif untuk analisis konstruksi dan pajak"
+  version: "1.0.0"
+
+# Telegram Configuration
+telegram:
+  webhook_url_path: "/webhook"
+  max_connections: 40
+  allowed_updates: ["message", "callback_query", "inline_query"]
+
+# AI Configuration
+ai:
+  provider: "together"
+  model: "meta-llama/Llama-2-70b-chat-hf"
+  max_tokens: 2048
+  temperature: 0.7
+  context_window: 4096
+
+# Document Processing
+document_processing:
+  max_file_size: 52428800  # 50MB
+  allowed_extensions:
+    - pdf
+    - docx
+    - xlsx
+    - xls
+    - png
+    - jpg
+    - jpeg
+    - gif
+    - bmp
+    - tiff
+  ocr_languages:
+    - eng
+    - ind  # Indonesian
+
+# Construction Calculations
+construction:
+  default_markup: 0.15  # 15% markup
+  labor_cost_percentage: 0.30  # 30% of total
+  material_cost_percentage: 0.60  # 60% of total
+  overhead_percentage: 0.10  # 10% of total
+
+# Database
+database:
+  cleanup_days: 30  # Delete old messages after 30 days
+  max_memory_contexts: 50  # Maximum memory contexts per session
+
+# Logging
+logging:
+  level: "DEBUG"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "bot.log"
