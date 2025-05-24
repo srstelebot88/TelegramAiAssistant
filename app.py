@@ -46,20 +46,20 @@ def webhook():
     """Handle incoming Telegram webhook updates"""
     try:
         data = request.get_json()
-        logger.debug(f"Received webhook data: {json.dumps(data, indent=2) if data else 'No data'}")
+        logging.debug(f"Received webhook data: {json.dumps(data, indent=2) if data else 'No data'}")
         
         if not data:
-            logger.warning("No data received in webhook")
+            logging.warning("No data received in webhook")
             return jsonify({"status": "error", "message": "No data"}), 400
         
         # For now, just log the update and return OK
         # TODO: Process the update with dispatcher
-        logger.info("Webhook received successfully")
+        logging.info("Webhook received successfully")
         
         return jsonify({"status": "ok"})
         
     except Exception as e:
-        logger.error(f"Error processing webhook: {str(e)}", exc_info=True)
+        logging.error(f"Error processing webhook: {str(e)}", exc_info=True)
         return jsonify({"status": "error", "message": str(e)}), 500
 
 @app.route('/health', methods=['GET'])
