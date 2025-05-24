@@ -1,0 +1,92 @@
+
+BOT TELEGRAM AI - STRUKTUR DAN FITUR UTAMA
+
+===========================================
+FITUR UTAMA BOT
+===========================================
+1. Chatbot AI responsif dan interaktif
+2. Memahami konteks chat sebelumnya (memory)
+3. Membaca & memahami dokumen (PDF, DOCX, XLSX, gambar)
+4. OCR untuk gambar teknis (denah, potongan, DED)
+5. Ekstraksi dan klasifikasi data teknis/pajak
+6. Perhitungan volume, biaya, material konstruksi
+7. Estimasi pajak konstruksi (PPh Final, dsb)
+8. Ringkasan cerdas (AiSmart Summary)
+9. Prompt preset dan gaya jawaban khusus
+10. Mode kerja biasa vs mode ringkasan
+11. Regulasi Watcher (pantau update PUPR, DJP)
+12. Integrasi penuh dengan Telegram (inline keyboard, perintah, upload)
+
+===========================================
+ARSITEKTUR UMUM
+===========================================
+- Telegram Bot Gateway (via webhook)
+- Dispatcher & Routing logika
+- Sistem Prompt & Memory
+- AI Processing Engine (LLM API, Together.ai, OpenAI, dll)
+- Sistem Analisis Dokumen (PDF, Gambar, Word, Excel)
+- Knowledge Base internal (JSON statis) dan eksternal (vector store)
+- Modul Regulasi Watcher real-time
+- Penyimpanan Riwayat Chat & File
+
+===========================================
+MODUL UTAMA
+===========================================
+1. app/                 : Inti bot Telegram (dispatcher, webhook)
+2. ai_core/             : Interaksi AI, rangkuman, prompt builder
+3. document_handler/    : Pembaca dokumen & klasifikasi teknis
+4. knowledge_base/      : KB internal & eksternal (RAG)
+5. regulasi_watcher/    : Scraper regulasi dari PUPR/DJP
+6. db/                  : Penyimpanan file dan SQLite
+7. utils/               : Fungsi bantu umum
+
+===========================================
+STRUKTUR FOLDER
+===========================================
+bot-ai/
+│
+├── main.py
+├── config.yaml
+├── requirements.txt
+├── .env
+│
+├── app/
+│   ├── telegram_webhook.py
+│   ├── dispatcher.py
+│   ├── response_format.py
+│   ├── prompt_engine.py
+│   └── memory_store.py
+│
+├── ai_core/
+│   ├── model_client.py
+│   ├── context_builder.py
+│   └── summarizer.py
+│
+├── document_handler/
+│   ├── parser_pdf.py
+│   ├── parser_docx.py
+│   ├── parser_xlsx.py
+│   ├── image_ocr.py
+│   └── classifier.py
+│
+├── knowledge_base/
+│   ├── internal_kb.json
+│   ├── external_kb_vector/
+│   ├── retriever.py
+│   └── loader.py
+│
+├── regulasi_watcher/
+│   ├── scraper.py
+│   ├── extractor.py
+│   ├── classifier.py
+│   ├── change_detector.py
+│   └── updater.py
+│
+├── db/
+│   ├── chat_logs.sqlite
+│   └── documents/
+│
+└── utils/
+    ├── logger.py
+    ├── file_utils.py
+    └── time_utils.py
