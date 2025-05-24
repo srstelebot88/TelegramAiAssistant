@@ -16,7 +16,7 @@ class AIModelClient:
             raise ValueError("TOGETHER_API_KEY is required")
         
         self.base_url = "https://api.together.xyz/v1"
-        self.default_model = "meta-llama/Llama-2-70b-chat-hf"
+        self.default_model = "meta-llama/Llama-3.2-3B-Instruct-Turbo"
         self.max_tokens = 2048
         self.temperature = 0.7
         
