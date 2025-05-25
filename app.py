@@ -50,10 +50,11 @@ def webhook():
             logging.warning("No data received in webhook")
             return jsonify({"status": "error", "message": "No data"}), 400
         
-        # For now, just log the update and return OK
-        # TODO: Process the update with dispatcher
-        logging.info("Webhook received successfully")
+        # Process the update with dispatcher
+        from app.telegram_webhook import process_telegram_update
+        process_telegram_update(data)
         
+        logging.info("Webhook processed successfully")
         return jsonify({"status": "ok"})
         
     except Exception as e:
