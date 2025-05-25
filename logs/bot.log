@@ -1,0 +1,12 @@
+2025-05-24 20:11:52,151 - ai_core.model_client - ERROR - Together.ai API error: 400 - {
+  "id": "nvNABr8-4yUbBN-944f71d17bccb02f",
+  "error": {
+    "message": "Unable to access non-serverless model meta-llama/Llama-2-70b-chat-hf. Please visit https://api.together.ai/models/meta-llama/Llama-2-70b-chat-hf to create and start a new dedicated endpoint for the model.",
+    "type": "invalid_request_error",
+    "param": null,
+    "code": "model_not_available"
+  }
+}
+2025-05-24 20:11:52,152 - ai_core.model_client - WARNING - Together.ai failed, trying fallback providers
+2025-05-24 20:11:54,743 - ai_core.model_client - ERROR - Error calling Anthropic: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}}
+2025-05-24 20:11:54,744 - ai_core.model_client - ERROR - All AI providers failed

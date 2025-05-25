@@ -1,0 +1,105 @@
+2025-05-24 20:36:32,967 - semgrep.run_scan - DEBUG - semgrep version 1.2.0
+2025-05-24 20:36:32,971 - semgrep.git - DEBUG - Failed to get project url from 'git ls-remote': Command failed with exit code: 128
+-----
+Command failed with output:
+fatal: No remote configured to list refs from.
+
+
+Failed to run 'git ls-remote --get-url'. Possible reasons:
+
+- the git binary is not available
+- the current working directory is not a git repository
+- the baseline commit is not a parent of the current commit
+    (if you are running through semgrep-app, check if you are setting `SEMGREP_BRANCH` or `SEMGREP_BASELINE_COMMIT` properly)
+- the current working directory is not marked as safe
+    (fix with `git config --global --add safe.directory $(pwd)`)
+
+Try running the command yourself to debug the issue.
+2025-05-24 20:36:32,972 - semgrep.config_resolver - DEBUG - Loading local config from /home/runner/workspace/.config/.semgrep/semgrep_rules.json
+2025-05-24 20:36:32,974 - semgrep.config_resolver - DEBUG - Done loading local config from /home/runner/workspace/.config/.semgrep/semgrep_rules.json
+2025-05-24 20:36:32,977 - semgrep.config_resolver - DEBUG - Saving rules to /tmp/semgrep-rfvg7gd7.rules
+2025-05-24 20:36:33,138 - semgrep.semgrep_core - DEBUG - Failed to open resource semgrep-core-proprietary: [Errno 2] No such file or directory: '/tmp/_MEICj37cw/semgrep/bin/semgrep-core-proprietary'.
+2025-05-24 20:36:33,561 - semgrep.rule_lang - DEBUG - semgrep-core validation response: valid=True
+2025-05-24 20:36:33,562 - semgrep.rule_lang - DEBUG - semgrep-core validation succeeded
+2025-05-24 20:36:33,562 - semgrep.rule_lang - DEBUG - RPC validation succeeded
+2025-05-24 20:36:33,562 - semgrep.config_resolver - DEBUG - loaded 1 configs in 0.5902111530303955
+2025-05-24 20:36:33,629 - semgrep.run_scan - VERBOSE - running 711 rules from 1 config /home/runner/workspace/.config/.semgrep/semgrep_rules.json_0
+2025-05-24 20:36:33,629 - semgrep.run_scan - VERBOSE - No .semgrepignore found. Using default .semgrepignore rules. See the docs for the list of default ignores: https://semgrep.dev/docs/cli-usage/#ignore-files
+2025-05-24 20:36:33,631 - semgrep.run_scan - VERBOSE - Rules:
+2025-05-24 20:36:33,631 - semgrep.run_scan - VERBOSE - <SKIPPED DATA (too many entries; use --max-log-list-entries)>
+2025-05-24 20:36:33,792 - semgrep.core_runner - DEBUG - Passing whole rules directly to semgrep_core
+2025-05-24 20:36:33,887 - semgrep.core_runner - DEBUG - Running Semgrep engine with command:
+2025-05-24 20:36:33,887 - semgrep.core_runner - DEBUG - /tmp/_MEICj37cw/semgrep/bin/opengrep-core -json -rules /tmp/tmp7tfaycbp.json -j 8 -targets /tmp/tmpdw4cj202 -timeout 5 -timeout_threshold 3 -max_memory 0 -fast
+2025-05-24 20:36:36,142 - semgrep.core_runner - DEBUG - --- semgrep-core stderr ---
+[00.07][[34mINFO[0m]: Executed as: /tmp/_MEICj37cw/semgrep/bin/opengrep-core -json -rules /tmp/tmp7tfaycbp.json -j 8 -targets /tmp/tmpdw4cj202 -timeout 5 -timeout_threshold 3 -max_memory 0 -fast
+[00.07][[34mINFO[0m]: Version: 1.2.0
+[00.07][[34mINFO[0m]: Parsing rules in /tmp/tmp7tfaycbp.json
+[00.50][[34mINFO[0m]: scan: processing 75 files (skipping 0), with 524 rules (skipping 0 )
+[01.19][[33mWARNING[0m]: Fixpoint timeout while performing taint analysis [rule: config..semgrep.vendored-rules.python.boto3.security.hardcoded-token file: document_handler/parser_pdf.py func: parse_pdf:-1]
+[0m[01.59][[33mWARNING[0m]: Fixpoint timeout while performing taint analysis [rule: config..semgrep.vendored-rules.python.boto3.security.hardcoded-token file: document_handler/parser_xlsx.py func: _analyze_excel_content:-1]
+[0m[02.22][[34mINFO[0m]: Custom ignore pattern: None
+[02.22][[34mINFO[0m]: Custom ignore pattern: None
+--- end semgrep-core stderr ---
+2025-05-24 20:36:36,148 - semgrep.rule_match - DEBUG - match_key = ('', PosixPath('document_handler/image_ocr.py'), 'config..semgrep.vendored-rules.python.lang.security.audit.dangerous-subprocess-use-audit') match_id = 3641f8116a44c3de3e3ff288775e7c2b0002a7b31be728cf93ea2b643293545ed7ffcfaa0a6a7d4ae3532682b758b20304dec8d3a451a6bb79d8b794a9e75a51_0
+2025-05-24 20:36:36,149 - semgrep.rule_match - DEBUG - match_key = ('$ARR = ["=~/(sh|bash|ksh|csh|tcsh|zsh)/", "-c", ...]\n...\n $ARR = [...]\n...\n subprocess.run(*$ARR, ...) subprocess.run([*$ARR, ...]) subprocess.run("...", ...) subprocess.run(("...",...), ...) subprocess.run(...) subprocess.run(["...",...], ...) subprocess.CalledProcessError(...) subprocess.SubprocessError(...) subprocess.run("=~/(python)/","...",...) subprocess.run("=~/(python)/",...) subprocess.run("=~/(sh|bash|ksh|csh|tcsh|zsh)/","-c","...",...) subprocess.run("=~/(sh|bash|ksh|csh|tcsh|zsh)/","-c",...) subprocess.run(("=~/(python)/","...",...),...) subprocess.run(("=~/(python)/",...),...) subprocess.run(["=~/(python)/",...],...) subprocess.run(["=~/(python)/","...",...],...) subprocess.run(("=~/(sh|bash|ksh|csh|tcsh|zsh)/","-c","...",...),...) subprocess.run(("=~/(sh|bash|ksh|csh|tcsh|zsh)/","-c",...),...) subprocess.run(["=~/(sh|bash|ksh|csh|tcsh|zsh)/","-c",...],...) subprocess.run(["=~/(sh|bash|ksh|csh|tcsh|zsh)/","-c","...",...],...)', PosixPath('document_handler/image_ocr.py'), 'config..semgrep.vendored-rules.python.lang.security.audit.dangerous-subprocess-use-audit') match_id = d0d25093ceca6771a18dea85d8376d4dee346bc11e761341f5383fb1a8506de828c6d9a5b9ddeca78adc1bd8875d848a33165f9d1ba068c47cc201cbcf2cbee4_0
+2025-05-24 20:36:36,150 - semgrep.rule_match - DEBUG - match_key = ('$ARR = ["=~/(sh|bash|ksh|csh|tcsh|zsh)/", "-c", ...]\n...\n $ARR = [...]\n...\n subprocess.run(*$ARR, ...) subprocess.run([*$ARR, ...]) subprocess.run("...", ...) subprocess.run(("...",...), ...) subprocess.run(...) subprocess.run(["...",...], ...) subprocess.CalledProcessError(...) subprocess.SubprocessError(...) subprocess.run("=~/(python)/","...",...) subprocess.run("=~/(python)/",...) subprocess.run("=~/(sh|bash|ksh|csh|tcsh|zsh)/","-c","...",...) subprocess.run("=~/(sh|bash|ksh|csh|tcsh|zsh)/","-c",...) subprocess.run(("=~/(python)/","...",...),...) subprocess.run(("=~/(python)/",...),...) subprocess.run(["=~/(python)/",...],...) subprocess.run(["=~/(python)/","...",...],...) subprocess.run(("=~/(sh|bash|ksh|csh|tcsh|zsh)/","-c","...",...),...) subprocess.run(("=~/(sh|bash|ksh|csh|tcsh|zsh)/","-c",...),...) subprocess.run(["=~/(sh|bash|ksh|csh|tcsh|zsh)/","-c",...],...) subprocess.run(["=~/(sh|bash|ksh|csh|tcsh|zsh)/","-c","...",...],...)', PosixPath('document_handler/image_ocr.py'), 'config..semgrep.vendored-rules.python.lang.security.audit.dangerous-subprocess-use-audit') match_id = d0d25093ceca6771a18dea85d8376d4dee346bc11e761341f5383fb1a8506de828c6d9a5b9ddeca78adc1bd8875d848a33165f9d1ba068c47cc201cbcf2cbee4_0
+2025-05-24 20:36:36,151 - semgrep.rule_match - DEBUG - match_key = ('$ARR = ["=~/(sh|bash|ksh|csh|tcsh|zsh)/", "-c", ...]\n...\n $ARR = [...]\n...\n subprocess.run(*$ARR, ...) subprocess.run([*$ARR, ...]) subprocess.run("...", ...) subprocess.run(("...",...), ...) subprocess.run(...) subprocess.run(["...",...], ...) subprocess.CalledProcessError(...) subprocess.SubprocessError(...) subprocess.run("=~/(python)/","...",...) subprocess.run("=~/(python)/",...) subprocess.run("=~/(sh|bash|ksh|csh|tcsh|zsh)/","-c","...",...) subprocess.run("=~/(sh|bash|ksh|csh|tcsh|zsh)/","-c",...) subprocess.run(("=~/(python)/","...",...),...) subprocess.run(("=~/(python)/",...),...) subprocess.run(["=~/(python)/",...],...) subprocess.run(["=~/(python)/","...",...],...) subprocess.run(("=~/(sh|bash|ksh|csh|tcsh|zsh)/","-c","...",...),...) subprocess.run(("=~/(sh|bash|ksh|csh|tcsh|zsh)/","-c",...),...) subprocess.run(["=~/(sh|bash|ksh|csh|tcsh|zsh)/","-c",...],...) subprocess.run(["=~/(sh|bash|ksh|csh|tcsh|zsh)/","-c","...",...],...)', PosixPath('document_handler/image_ocr.py'), 'config..semgrep.vendored-rules.python.lang.security.audit.dangerous-subprocess-use-audit') match_id = d0d25093ceca6771a18dea85d8376d4dee346bc11e761341f5383fb1a8506de828c6d9a5b9ddeca78adc1bd8875d848a33165f9d1ba068c47cc201cbcf2cbee4_0
+2025-05-24 20:36:36,151 - semgrep.rule_match - DEBUG - match_key = ('', PosixPath('main.py'), 'config..semgrep.vendored-rules.python.flask.security.audit.avoid_app_run_with_bad_host') match_id = f5a1d78d28043340433dedc0a20165e63b50d9aa4305aede97be74105c8207b5b89db08fa6703decc4ec27aafa081254be07d38814f40c19f447cf4721551845_0
+2025-05-24 20:36:36,152 - semgrep.rule_match - DEBUG - match_key = ('app.run(..., "0.0.0.0", ...) app.run(..., host="0.0.0.0", ...)', PosixPath('main.py'), 'config..semgrep.vendored-rules.python.flask.security.audit.avoid_app_run_with_bad_host') match_id = 5c1cbbc54bfaa7420b881ae9f997ad4b5ed5aa16b127a74e037d220112ac891aa501638c0e19641f765822573b5e6f14657485c6b72c0846fdec9bc63200dc57_0
+2025-05-24 20:36:36,152 - semgrep.rule_match - DEBUG - match_key = ('app.run(..., "0.0.0.0", ...) app.run(..., host="0.0.0.0", ...)', PosixPath('main.py'), 'config..semgrep.vendored-rules.python.flask.security.audit.avoid_app_run_with_bad_host') match_id = 5c1cbbc54bfaa7420b881ae9f997ad4b5ed5aa16b127a74e037d220112ac891aa501638c0e19641f765822573b5e6f14657485c6b72c0846fdec9bc63200dc57_0
+2025-05-24 20:36:36,153 - semgrep.rule_match - DEBUG - match_key = ('app.run(..., "0.0.0.0", ...) app.run(..., host="0.0.0.0", ...)', PosixPath('main.py'), 'config..semgrep.vendored-rules.python.flask.security.audit.avoid_app_run_with_bad_host') match_id = 5c1cbbc54bfaa7420b881ae9f997ad4b5ed5aa16b127a74e037d220112ac891aa501638c0e19641f765822573b5e6f14657485c6b72c0846fdec9bc63200dc57_0
+2025-05-24 20:36:36,153 - semgrep.rule_match - DEBUG - match_key = ('', PosixPath('utils/file_utils.py'), 'config..semgrep.vendored-rules.python.lang.security.insecure-hash-algorithm-md5') match_id = 61c95c6f6e7be2e24eee866822731377981da0ddf215b7c4bc680a4ac84cc5f18e1749287a4ef48639c8c4547b7f1a50cee3401ba9de82bc3458f747b81f48f6_0
+2025-05-24 20:36:36,153 - semgrep.rule_match - DEBUG - match_key = ('hashlib.md5(...) hashlib.md5(..., usedforsecurity=False, ...)', PosixPath('utils/file_utils.py'), 'config..semgrep.vendored-rules.python.lang.security.insecure-hash-algorithm-md5') match_id = 05902a062271040b3bbb6f35aee087c0f5ab53ce784ddc81f26b5e5e3e5e8b7bacd8ecbb198f893eb79e81cd39437e23b42c04cc8c0d9f8f0b21e37d0b0e421e_0
+2025-05-24 20:36:36,154 - semgrep.rule_match - DEBUG - match_key = ('hashlib.md5(...) hashlib.md5(..., usedforsecurity=False, ...)', PosixPath('utils/file_utils.py'), 'config..semgrep.vendored-rules.python.lang.security.insecure-hash-algorithm-md5') match_id = 05902a062271040b3bbb6f35aee087c0f5ab53ce784ddc81f26b5e5e3e5e8b7bacd8ecbb198f893eb79e81cd39437e23b42c04cc8c0d9f8f0b21e37d0b0e421e_0
+2025-05-24 20:36:36,154 - semgrep.rule_match - DEBUG - match_key = ('hashlib.md5(...) hashlib.md5(..., usedforsecurity=False, ...)', PosixPath('utils/file_utils.py'), 'config..semgrep.vendored-rules.python.lang.security.insecure-hash-algorithm-md5') match_id = 05902a062271040b3bbb6f35aee087c0f5ab53ce784ddc81f26b5e5e3e5e8b7bacd8ecbb198f893eb79e81cd39437e23b42c04cc8c0d9f8f0b21e37d0b0e421e_0
+2025-05-24 20:36:36,156 - semgrep.core_runner - DEBUG - semgrep ran in 0:00:02.363856 on 27 files
+2025-05-24 20:36:36,157 - semgrep.core_runner - DEBUG - findings summary: 2 warning, 1 error, 0 info
+2025-05-24 20:36:36,159 - semgrep.app.auth - DEBUG - Getting API token from settings file
+2025-05-24 20:36:36,160 - semgrep.app.auth - DEBUG - No API token found in settings file
+2025-05-24 20:36:36,160 - semgrep.semgrep_core - DEBUG - Failed to open resource semgrep-core-proprietary: [Errno 2] No such file or directory: '/tmp/_MEICj37cw/semgrep/bin/semgrep-core-proprietary'.
+2025-05-24 20:36:36,285 - semgrep.output - VERBOSE - 
+========================================
+Files skipped:
+========================================
+
+  Always skipped by Opengrep:
+
+   • <none>
+
+  Skipped by .gitignore:
+  (Disable by passing --no-git-ignore)
+
+   • <all files not listed by `git ls-files` were skipped>
+
+  Skipped by .semgrepignore:
+  - https://semgrep.dev/docs/ignoring-files-folders-code/#understand-semgrep-defaults
+
+   • <none>
+
+  Skipped by --include patterns:
+
+   • <none>
+
+  Skipped by --exclude patterns:
+
+   • <none>
+
+  Files skipped due to insufficient read permissions:
+
+   • <none>
+
+  Skipped by limiting to files smaller than 1000000 bytes:
+  (Adjust with the --max-target-bytes flag)
+
+   • <none>
+
+  Partially analyzed due to parsing or internal Opengrep errors
+
+   • <none>
+
+2025-05-24 20:36:36,286 - semgrep.output - INFO - Some files were skipped or only partially analyzed.
+  Scan was limited to files tracked by git.
+
+Ran 488 rules on 27 files: 3 findings.
+2025-05-24 20:36:36,286 - semgrep.app.version - DEBUG - Version cache does not exist
+2025-05-24 20:36:36,300 - semgrep.metrics - VERBOSE - Not sending pseudonymous metrics since metrics are configured to OFF and registry usage is False
